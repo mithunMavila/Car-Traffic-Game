@@ -121,7 +121,7 @@ Transform:
   - {fileID: 2340300908849456774}
   - {fileID: 4873461803756755019}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7113119161366932701
 Rigidbody:
@@ -187,6 +187,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainRoute: {fileID: 0}
   reverseRoute: {fileID: 0}
+  levelManager: {fileID: 0}
+  gameManager: {fileID: 0}
+  newTag: moving
 --- !u!1 &207547011442252905
 GameObject:
   m_ObjectHideFlags: 0
@@ -3845,7 +3848,7 @@ GameObject:
   - component: {fileID: 8703404541569820208}
   - component: {fileID: 7564124440782868557}
   m_Layer: 0
-  m_Name: 60627
+  m_Name: arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

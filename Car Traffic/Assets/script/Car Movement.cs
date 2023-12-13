@@ -15,6 +15,7 @@ public class CarMovement : MonoBehaviour
 
     public string newTag = "moving";
 
+    
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +32,21 @@ public class CarMovement : MonoBehaviour
 
     public void OnMouseDown()
     {
-        gameObject.tag = newTag;
-        spline.Restart(true);
+        if (gameManager.reversing==false)
+        {
+            gameObject.tag = newTag;
+            spline.Restart(true);
+        }
+        else
+        {
+            Transform arrowTransform = transform.Find("arrow");
+            if (arrowTransform != null)
+            {
+                arrowTransform.localRotation *= Quaternion.Euler(180f, 0f, 0f);
+            }
+            spline.Container = reverseRoute;
+            gameManager.reversing = false;
+        }
 
     }
 
@@ -76,4 +90,6 @@ public class CarMovement : MonoBehaviour
         }
         gameObject.tag = "car";
     }
+
+   
 }

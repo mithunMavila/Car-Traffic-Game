@@ -12,12 +12,17 @@ public class GameManager : MonoBehaviour
     public HealthBar HealthBar;
 
    public bool IsPaused;
+    public bool reversing = false;
+
+    public static GameManager instance; 
+    
     // Start is called before the first frame update
     void Start()
     {
         LostCanavas.SetActive(false);
         HealthBar.SetMaxHealth(Health);
         PauseMenu.SetActive(false);
+        instance = this;    
     }
 
     // Update is called once per frame
@@ -66,9 +71,19 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void Next()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
 
     public void heli()
     {
         Debug.Log("worked");
+    }
+    public void ReverseButtonClick()
+    {
+        reversing = true;
+
     }
 }

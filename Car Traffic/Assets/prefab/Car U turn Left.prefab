@@ -2339,7 +2339,7 @@ Transform:
   - {fileID: 988320602574459434}
   - {fileID: 429040968897858859}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1876923004895317075
 Rigidbody:
@@ -2405,6 +2405,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainRoute: {fileID: 0}
   reverseRoute: {fileID: 0}
+  levelManager: {fileID: 0}
+  gameManager: {fileID: 0}
+  newTag: moving
 --- !u!1 &6158563947661340479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,7 +3192,7 @@ GameObject:
   - component: {fileID: 4669810351437453485}
   - component: {fileID: 6438594301173294346}
   m_Layer: 0
-  m_Name: 60627
+  m_Name: arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
