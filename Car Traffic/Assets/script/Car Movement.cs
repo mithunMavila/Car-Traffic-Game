@@ -13,6 +13,8 @@ public class CarMovement : MonoBehaviour
     public LevelManager levelManager;
     public GameManager gameManager;
 
+    public string newTag = "moving";
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,9 @@ public class CarMovement : MonoBehaviour
 
     public void OnMouseDown()
     {
+        gameObject.tag = newTag;
         spline.Restart(true);
+
     }
 
    
@@ -39,11 +43,16 @@ public class CarMovement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("car") )
         {
-            gameManager.Health -= 10;
+            spline.Pause();
+            StartCoroutine(ReverseAnimation());
+
+            gameManager.HealthUpdate(20);
+
+
         }
         if (collision.gameObject.CompareTag("human"))
         {
-            gameManager.Health -= 20;
+            gameManager.HealthUpdate(20);
         }
     }
     public void OnTriggerEnter(Collider other)
@@ -51,6 +60,20 @@ public class CarMovement : MonoBehaviour
         if (other.CompareTag("finish"))
         {
             levelManager.CarCount--;
+            gameObject.SetActive(false);
         }
+    }
+    private IEnumerator ReverseAnimation()
+    {
+        float duration = spline.ElapsedTime;
+        float elapsedTime = 0.001f;
+       
+        while (elapsedTime < duration && spline.ElapsedTime > 0f)
+        {
+            spline.ElapsedTime -= Time.deltaTime;
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+        gameObject.tag = "car";
     }
 }

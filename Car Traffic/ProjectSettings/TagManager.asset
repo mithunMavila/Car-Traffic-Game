@@ -6,6 +6,8 @@ TagManager:
   tags:
   - car
   - finish
+  - human
+  - moving
   layers:
   - Default
   - TransparentFX
