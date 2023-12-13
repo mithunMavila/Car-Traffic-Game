@@ -10,6 +10,9 @@ public class CarMovement : MonoBehaviour
 
    private SplineAnimate spline;
 
+    public LevelManager levelManager;
+    public GameManager gameManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,5 +30,27 @@ public class CarMovement : MonoBehaviour
     public void OnMouseDown()
     {
         spline.Restart(true);
+    }
+
+   
+    public void OnCollisionEnter(Collision collision)
+    {
+        
+
+        if (collision.gameObject.CompareTag("car") )
+        {
+            gameManager.Health -= 10;
+        }
+        if (collision.gameObject.CompareTag("human"))
+        {
+            gameManager.Health -= 20;
+        }
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("finish"))
+        {
+            levelManager.CarCount--;
+        }
     }
 }
