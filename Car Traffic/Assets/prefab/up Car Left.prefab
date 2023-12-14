@@ -1469,8 +1469,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainRoute: {fileID: 0}
   reverseRoute: {fileID: 0}
-  levelManager: {fileID: 0}
-  gameManager: {fileID: 0}
   newTag: moving
 --- !u!1 &3509475189078570091
 GameObject:

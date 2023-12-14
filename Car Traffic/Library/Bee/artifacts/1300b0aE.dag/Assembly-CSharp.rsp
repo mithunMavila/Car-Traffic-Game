@@ -362,6 +362,7 @@
 "Assets/script/Car Movement.cs"
 "Assets/script/GameManager.cs"
 "Assets/script/HealthBar.cs"
+"Assets/script/HelicopterMovement.cs"
 "Assets/script/LevelManager.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
    public bool IsPaused;
     public bool reversing = false;
+    public bool helicopter=false;
 
     public static GameManager instance; 
     
@@ -79,10 +80,12 @@ public class GameManager : MonoBehaviour
 
     public void heli()
     {
-        Debug.Log("worked");
+        reversing = false;
+        helicopter = true;
     }
     public void ReverseButtonClick()
     {
+        helicopter=false;
         reversing = true;
 
     }

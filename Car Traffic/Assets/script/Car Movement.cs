@@ -10,17 +10,22 @@ public class CarMovement : MonoBehaviour
 
    private SplineAnimate spline;
 
-    public LevelManager levelManager;
-    public GameManager gameManager;
+    private LevelManager levelManager;
+    private GameManager gameManager;
 
     public string newTag = "moving";
+
+    private HelicopterMovement HelicopterMovement;
 
     
 
     // Start is called before the first frame update
     void Start()
     {
-        mainRoute = GetComponent<SplineContainer>();
+        gameManager=FindFirstObjectByType<GameManager>();
+        levelManager = FindObjectOfType<LevelManager>();
+        HelicopterMovement = FindFirstObjectByType<HelicopterMovement>();
+      
         spline = GetComponent<SplineAnimate>();
     }
 
@@ -32,12 +37,13 @@ public class CarMovement : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (gameManager.reversing==false)
+        if (gameManager.reversing==false && gameManager.helicopter==false)
         {
             gameObject.tag = newTag;
+            spline.Container = mainRoute;   
             spline.Restart(true);
         }
-        else
+        else if (gameManager.reversing==true && gameManager.helicopter==false)
         {
             Transform arrowTransform = transform.Find("arrow");
             if (arrowTransform != null)
@@ -46,6 +52,15 @@ public class CarMovement : MonoBehaviour
             }
             spline.Container = reverseRoute;
             gameManager.reversing = false;
+        }
+        else if(gameManager.reversing==false && gameManager.helicopter==true)
+        {
+            gameManager.helicopter= false;
+            HelicopterMovement.MoveHelicopter(transform);
+        }
+        else
+        {
+            Debug.Log("error in heli");
         }
 
     }
